@@ -1,24 +1,25 @@
-import {Route, Routes} from "react-router-dom"
-import { Inicio } from "../../componentes/contenedor/Inicio"
-import { MenuCrear } from "../../componentes/menu/MenuCrear"
-import { MenuListar } from "../../componentes/menu/MenuListar"
-import { MenuAdmin } from "../../componentes/menu/MenuAdmin"
-import { Acerca } from "../../componentes/otros/Acerca"
-import { NoEncontrado } from "../../componentes/contenedor/NoEncontrado"
+import { Route, Routes } from "react-router-dom";
+import { Inicio } from "../../componentes/contenedor/Inicio";
+import { MenuCrear } from "../../componentes/menu/MenuCrear";
+import { MenuListar } from "../../componentes/menu/MenuListar";
+import { MenuAdmin } from "../../componentes/menu/MenuAdmin";
+import { Acerca } from "../../componentes/otros/Acerca";
+import { NoEncontrado } from "../../componentes/contenedor/NoEncontrado";
+import { MenuActualizar } from "../../componentes/menu/MenuActualizar";
 
-export const Ruteo = () =>{
-    return(
-        <Routes>
-            <Route path="/" element={<Inicio />}/>
+export const Ruteo = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<Inicio />} />
 
+      <Route path="/mencre" element={<MenuCrear />} />
+      <Route path="/menlis" element={<MenuListar />} />
+      <Route path="/menadmin" element={<MenuAdmin />} />
+      <Route path="/menuactu/:codigo" element={<MenuActualizar />} />
 
-            <Route path="/mencre" element={<MenuCrear />}/>
-            <Route path="/menlis" element={<MenuListar />}/>
-            <Route path="/menadmin" element={<MenuAdmin />}/>
+      <Route path="/menuacer" element={<Acerca />} />
 
-            <Route path="/menuacer" element={<Acerca />}/>
-
-            <Route path="*" element={<NoEncontrado />}/>
-        </Routes>
-    )
-}
+      <Route path="*" element={<NoEncontrado />} />
+    </Routes>
+  );
+};
