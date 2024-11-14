@@ -1,4 +1,18 @@
+import { useState } from "react";
+import { Plato } from "../../modelos/Plato";
+import { ARREGLO_PLATOS } from "../../mocks/Plato-mocks";
+import { ARREGLO_PLATOS_REGION } from "../../utilidades/dominios/DomRegion";
+
 export const MenuListar = () => {
+  const [arrPlatos] = useState<Plato[]>(ARREGLO_PLATOS);
+
+  const obtenerNombre = (valor: string) => {
+    for (const objRegion of ARREGLO_PLATOS_REGION) {
+      if (objRegion.codRegion == valor) 
+        return objRegion.nombreRegion;
+    }
+  };
+
   return (
     <>
       <div className="pt-5 d-flex justify-content-center">
@@ -6,49 +20,25 @@ export const MenuListar = () => {
           <table className="table table-striped">
             <thead>
               <tr>
-                <th style={{width: "5%"}}>No.</th>
-                <th style={{width: "30%"}}>Nombre Plato</th>
-                <th style={{width: "25%"}}>Acompañamiento</th>
-                <th style={{width: "20%"}} className="text-center">Precio</th>
-                <th style={{width: "20%"}}>Region</th>
+                <th style={{ width: "5%" }}>Codigo</th>
+                <th style={{ width: "30%" }}>Nombre Plato</th>
+                <th style={{ width: "20%" }}>Precio</th>
+                <th style={{ width: "20%" }}>Region</th>
+                <th style={{ width: "20%" }}>imagen</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Bandeja paisa</td>
-                <td>Con aguacate</td>
-                <td className="text-center">35000</td>
-                <td>Andina</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Ajiaco</td>
-                <td>Con arroz</td>
-                <td className="text-center">20000</td>
-                <td>Andina</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Pescado frito</td>
-                <td>Con patacon</td>
-                <td className="text-center">30000</td>
-                <td>Caribe</td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Mute santadereano</td>
-                <td>Con arroz</td>
-                <td className="text-center">25000</td>
-                <td>Andina</td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Piraña a la brasa</td>
-                <td>Con arroz</td>
-                <td className="text-center">36000</td>
-                <td>Orinoquia</td>
-              </tr>
+              {arrPlatos.map((miPlat: Plato) => (
+                <tr key={miPlat.codPlato} className="aling-middle">
+                  <td>{miPlat.codPlato}</td>
+                  <td>{miPlat.nombrePlato}</td>
+                  <td>{miPlat.precioPlato}</td>
+                  <td>{obtenerNombre(miPlat.regionPlato)}</td>
+                  <td>
+                    <img src={miPlat.imagenPlatoBase64} alt={miPlat.nombrePlato} className="imagenListado" />
+                    {miPlat.imagenPlato}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
