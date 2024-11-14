@@ -5,14 +5,12 @@ export const Inicio = () => {
       <div className="col-md-6">
        <div className="h-100 p-5 text-bg-dark rounded-3">
 
-        <h2>Change the background</h2>
+        <h2>Unicosta Fast Food</h2>
         <p>
-          Swap the background-color utility and add a `.text-*` color utility to
-          mix up the jumbotron look. Then, mix and match with additional
-          component themes and more.
+          Bienvenidos a nuestro restaurante, sera un placer atenderte en el dia de hoy
         </p>
         <button className="btn btn-outline-light" type="button">
-          Example button
+          Continuar
         </button>
         </div>
       </div>
